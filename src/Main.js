@@ -64,7 +64,7 @@ function XcmFunction() {
         let vals = yield response.json();
         let adatok = vals.users;
         eraseALLContent();
-        let span = document.getElementById('osszsuly');
+        let span = document.getElementById('dataspan');
         let xcm = document.getElementById('Xcm');
         let sum = 0;
         for (let p of adatok) {
@@ -80,7 +80,7 @@ function eraseALLContent() {
     elemek.textContent = "";
     let table = document.getElementById('tablazat');
     table.textContent = "";
-    let span = document.getElementById('osszsuly');
+    let span = document.getElementById('dataspan');
     span.textContent = "";
 }
 function BrownEye() {
@@ -89,13 +89,15 @@ function BrownEye() {
         let vals = yield response.json();
         let adatok = vals.users;
         eraseALLContent();
-        for (let brn of adt) {
-        }
+        document.getElementById('barnaszem');
+        adatok = adatok.map(e => e.eyeColor == 'Brown');
+        let span = document.getElementById('dataspan');
+        span.innerHTML = adatok.length;
     });
 }
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('allUser').addEventListener('click', () => AllUserInABCorder());
     document.getElementById('AvA').addEventListener('click', () => avas());
     document.getElementById('XcmFunc').addEventListener('click', () => XcmFunction());
-    document.getElementById('');
+    document.getElementById('browneyed').addEventListener('click', () => BrownEye());
 });
